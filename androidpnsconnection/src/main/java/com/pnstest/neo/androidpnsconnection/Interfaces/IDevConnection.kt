@@ -1,8 +1,7 @@
 package com.pnstest.neo.androidpnsconnection.Interfaces
 
 
-import com.pnstest.neo.androidpnsconnection.Interfaces.models.PNSRequest
-import org.json.JSONObject
+import com.pnstest.neo.androidpnsconnection.Interfaces.models.AccessToken
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -10,13 +9,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 import io.reactivex.Observable
 import retrofit2.http.*
 
-interface IPNSConnection {
+interface IDevConnection {
 
-    @POST("devices")
-    fun registerDevice(@Body client : PNSRequest ) : Observable<kotlin.Any>
+    @GET("api/cmc/auth/access-token/")
+    fun getAccessToken(@Header("Authorization") token : String) : Observable<AccessToken>
 
     companion object {
-        fun create(baseURL: String, fcmToken: String): IPNSConnection {
+        fun create(baseURL: String, fcmToken: String): IDevConnection {
 
             val retrofit = Retrofit.Builder()
                 .addCallAdapterFactory(
@@ -26,7 +25,7 @@ interface IPNSConnection {
                 .baseUrl(baseURL)
                 .build()
 
-            return retrofit.create(IPNSConnection::class.java)
+            return retrofit.create(IDevConnection::class.java)
         }
     }
 
