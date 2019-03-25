@@ -18,15 +18,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener(this@MainActivity,
-            OnSuccessListener<InstanceIdResult> { instanceIdResult ->
-                val newToken = instanceIdResult.token
-                val connection = AndroidPNSConnection(newToken)
-                connection.beginSearch("Test")
-                Log.e("newToken", newToken)
-            })
-
     }
 }
