@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'com.github.dcendents.android-maven'
 
-group = 'com.github.neojdpm'
+group = 'com.github.Neojdpm'
 android {
     compileSdkVersion 28
 
