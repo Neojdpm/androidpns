@@ -3,11 +3,9 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'com.github.dcendents.android-maven'
 
-group = 'com.github.Neojdpm'
+group = 'com.github.neojdpm'
 android {
     compileSdkVersion 28
-
-
 
     defaultConfig {
         minSdkVersion 18
@@ -45,7 +43,6 @@ dependencies {
 ext {
     // Project
 
-    // ValidateTor Library Info
     libVersionCode = 1
     libVersionName = '1.0.0'
 }
