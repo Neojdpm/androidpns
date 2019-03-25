@@ -14,7 +14,13 @@ import io.reactivex.schedulers.Schedulers
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
-
+/**
+ * Android PNS Connection
+ *
+ * Funcionalidad para conectar la aplicacion Android al Pana Notification Server.
+ *
+ * @author neojdpm
+ */
 class AndroidPNSConnection(val baseURL: String, val pnsURL: String, val fcmToken: String, val accessToken: String, val appId : Int) {
     val attt = "Bearer $accessToken"
     val pnsapi by lazy {
