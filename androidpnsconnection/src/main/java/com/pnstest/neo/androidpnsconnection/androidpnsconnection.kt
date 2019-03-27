@@ -24,15 +24,14 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 class AndroidPNSConnection(val baseURL: String, val pnsURL: String, val fcmToken: String, val accessToken: String, val appId : Int) {
     val attt = "Bearer $accessToken"
     val pnsapi by lazy {
-        IPNSConnection.create(pnsURL, "")
+        IPNSConnection.create(pnsURL)
     }
     val devapi by lazy {
-        IDevConnection.create(baseURL, "")
+        IDevConnection.create(baseURL)
     }
     var disposable: Disposable? = null
 
     init {
-        Log.i("PNSConn", Build.MODEL)
         disposable = devapi.getAccessToken(this.attt).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

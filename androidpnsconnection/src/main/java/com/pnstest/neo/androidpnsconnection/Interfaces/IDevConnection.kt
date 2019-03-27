@@ -15,7 +15,7 @@ interface IDevConnection {
     fun getAccessToken(@Header("Authorization") token : String) : Observable<AccessToken>
 
     companion object {
-        fun create(baseURL: String, fcmToken: String): IDevConnection {
+        fun create(baseURL: String): IDevConnection {
 
             val retrofit = Retrofit.Builder()
                 .addCallAdapterFactory(

@@ -1,8 +1,6 @@
 package com.pnstest.neo.androidpnsconnection.Interfaces
 
-
 import com.pnstest.neo.androidpnsconnection.Interfaces.models.PNSRequest
-import org.json.JSONObject
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -16,7 +14,7 @@ interface IPNSConnection {
     fun registerDevice(@Body client : PNSRequest ) : Observable<kotlin.Any>
 
     companion object {
-        fun create(baseURL: String, fcmToken: String): IPNSConnection {
+        fun create(baseURL: String): IPNSConnection {
 
             val retrofit = Retrofit.Builder()
                 .addCallAdapterFactory(
