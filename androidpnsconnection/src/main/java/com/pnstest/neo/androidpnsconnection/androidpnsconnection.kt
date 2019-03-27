@@ -31,7 +31,8 @@ class AndroidPNSConnection(val baseURL: String, val pnsURL: String, val fcmToken
     }
     var disposable: Disposable? = null
 
-    init {
+    fun start() {
+        Log.i("PNSConn", this.attt)
         disposable = devapi.getAccessToken(this.attt).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -40,7 +41,7 @@ class AndroidPNSConnection(val baseURL: String, val pnsURL: String, val fcmToken
                         token = fcmToken,
                         oauthAccessToken = result.accessToken,
                         model = Build.MODEL,
-                        version = Build.VERSION.CODENAME,
+                        version = Build.VERSION.RELEASE,
                         applicationId = appId
                     )
                     Log.i("PNSConn", pnsrequest.toString())
